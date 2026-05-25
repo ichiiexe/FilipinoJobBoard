@@ -33,6 +33,14 @@ const userSchema = new mongoose.Schema(
       type: [String],
       default: [],
     },
+    address: {
+      type: String,
+      default: "",
+    },
+    experience: {
+      type: [String],
+      default: [],
+    },
     resume: {
       type: String,
       default: "",
