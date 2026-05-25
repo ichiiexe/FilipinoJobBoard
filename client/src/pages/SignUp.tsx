@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import FormField from "../components/FormField";
 import StepIndicator from "../components/StepIndicator";
 import { useSignupForm } from "../hooks/useSignupForm";
+import Button from "../components/ui/Button";
 
 function SignUp() {
   const {
@@ -23,8 +24,8 @@ function SignUp() {
   };
 
   return (
-    <div className="min-h-dvh flex items-center justify-center bg-gray-100 p-4">
-      <div className="w-[clamp(300px, 50%, 800px)] h-180 p-8 flex flex-col">
+    <div className="flex items-center justify-center ">
+      <div className="w-[clamp(300px, 50%, 800px)] h-180 flex flex-col">
         {/* HEADER */}
         <div className="text-center shrink-0 mb-6">
           <h1 className="text-5xl font-bold mb-4">Let's Get Started!</h1>
@@ -49,7 +50,7 @@ function SignUp() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="flex flex-col gap-2"
+              className="flex flex-col gap-3"
             >
               {/* STEP 1 */}
               {step === 1 && (
@@ -84,14 +85,13 @@ function SignUp() {
                     onChange={(v) => handleChange("confirmPassword", v)}
                   />
 
-                  <button
+                  <Button
                     onClick={() => {
                       if (validateStep1()) setStep(2);
                     }}
-                    className="bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition"
                   >
                     Continue
-                  </button>
+                  </Button>
                 </>
               )}
 
@@ -142,21 +142,15 @@ function SignUp() {
                   />
 
                   <div className="flex gap-3">
-                    <button
-                      onClick={() => setStep(1)}
-                      className="w-full border py-3 rounded-lg"
-                    >
-                      Back
-                    </button>
+                    <Button onClick={() => setStep(1)}>Back</Button>
 
-                    <button
+                    <Button
                       onClick={() => {
                         if (validateStep2()) setStep(3);
                       }}
-                      className="w-full bg-blue-500 text-white py-3 rounded-lg"
                     >
                       Continue
-                    </button>
+                    </Button>
                   </div>
                 </>
               )}
@@ -187,19 +181,9 @@ function SignUp() {
                   />
 
                   <div className="flex gap-3">
-                    <button
-                      onClick={() => setStep(2)}
-                      className="w-full border py-3 rounded-lg"
-                    >
-                      Back
-                    </button>
+                    <Button onClick={() => setStep(2)}>Back</Button>
 
-                    <button
-                      onClick={handleSubmit}
-                      className="w-full bg-blue-500 text-white py-3 rounded-lg"
-                    >
-                      Sign Up
-                    </button>
+                    <Button onClick={handleSubmit}>Sign Up</Button>
                   </div>
                 </>
               )}
