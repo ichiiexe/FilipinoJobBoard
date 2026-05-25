@@ -11,3 +11,7 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+* {
+  font-family: "Montserrat", sans-serif;
+}

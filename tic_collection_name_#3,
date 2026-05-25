@@ -1,0 +1,71 @@
+[33mcommit 3d5fb841430a9935ac81b7783813ad64388df3a3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: d996b72 493758b
+Author: Albert Jefferson <143300401+ichiiexe@users.noreply.github.com>
+Date:   Tue May 26 00:49:26 2026 +0300
+
+    Merge pull request #69 from ichiiexe/feature/signup
+    
+    Feature/signup
+
+[33mcommit 493758ba0a2f7b716849a87e246512b74d6d781d[m[33m ([m[1;31morigin/feature/signup[m[33m, [m[1;32mfeature/signup[m[33m)[m
+Author: Jefferson <jeff_abuy@hotmail.com>
+Date:   Tue May 26 00:43:53 2026 +0300
+
+    created SignUp page
+
+[33mcommit fabca8daddc93bfced6f375c01ad312c0c812224[m
+Author: Jefferson <jeff_abuy@hotmail.com>
+Date:   Tue May 26 00:43:02 2026 +0300
+
+    updated User Model
+
+[33mcommit d996b72c36379cb32f10f99f9a8064e452861510[m
+Merge: 8501a5b 42cbf74
+Author: Albert Jefferson <143300401+ichiiexe@users.noreply.github.com>
+Date:   Sun May 24 01:12:57 2026 +0300
+
+    Merge pull request #68 from ichiiexe/refactored/bugfix/routes
+    
+    fixed bug with imports, added register route, and code refactor
+
+[33mcommit 42cbf741cf7f9bb164f2bdda37553e5bc3428abc[m
+Author: Jefferson <jeff_abuy@hotmail.com>
+Date:   Sun May 24 01:11:46 2026 +0300
+
+    fixed bug with imports, added register route, and code refactor
+
+[33mcommit 8501a5b38c721dcbb960de67e8432e6a64692c7d[m
+Merge: ae39162 ac63cb8
+Author: Albert Jefferson <143300401+ichiiexe@users.noreply.github.com>
+Date:   Fri May 22 16:07:02 2026 +0300
+
+    Merge pull request #67 from ichiiexe/backend/mongodb
+    
+    connection to mongo
+
+[33mcommit ac63cb8d670cd6f26b748a834e5cefd3cc1d2c01[m
+Author: Jefferson <jeff_abuy@hotmail.com>
+Date:   Fri May 22 16:05:42 2026 +0300
+
+    connection to mongo
+
+[33mcommit ae39162b89d33dfe2106ad9a34efecdbff07300a[m
+Merge: aaa9234 bb58dbe
+Author: Albert Jefferson <143300401+ichiiexe@users.noreply.github.com>
+Date:   Fri May 22 15:49:35 2026 +0300
+
+    Merge pull request #66 from ichiiexe/backend/setup
+    
+    setup express and models
+
+[33mcommit bb58dbe24f764f12b596eea6e3b28cc37d907803[m
+Author: Jefferson <jeff_abuy@hotmail.com>
+Date:   Fri May 22 15:42:29 2026 +0300
+
+    setup express and models
+
+[33mcommit aaa92342222429a8ae7aa47f87421e571b5a7c3b[m
+Author: Jefferson <jeff_abuy@hotmail.com>
+Date:   Fri May 22 13:43:40 2026 +0300
+
+    test
