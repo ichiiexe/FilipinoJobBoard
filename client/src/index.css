@@ -1,4 +1,44 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+@theme {
+  /* Fonts */
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Plus Jakarta Sans", sans-serif;
+
+  /* Background */
+  --color-bg: #111315;
+  --color-surface: #181b1f;
+  --color-card: #20242a;
+  --color-elevated: #2a2f36;
+
+  /* Text */
+  --color-text: #f5f7fa;
+  --color-text-muted: #b0b7c3;
+  --color-text-dim: #7c8593;
+
+  /* Flag */
+  --color-primary: #0057b8;
+  --color-primary-hover: #1b74e4;
+  --color-primary-glow: #4c9fff;
+
+  /* Accents */
+  --color-danger: #ce1126;
+  --color-danger-hover: #e63946;
+
+  --color-accent: #f4c430;
+  --color-accent-soft: #ffd166;
+  --color-accent-muted: #c79a1b;
+
+  /* States */
+  --color-border: #2f3540;
+  --color-input: #171a1f;
+  --color-hover: #252b33;
+  --color-divider: #2a3038;
+
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+}
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -10,8 +50,4 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
-}
-
-* {
-  font-family: "Montserrat", sans-serif;
 }

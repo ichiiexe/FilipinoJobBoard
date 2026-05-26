@@ -20,11 +20,11 @@ function FormField({
   onChange,
 }: FormFieldProps) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 text-text">
       <label className="font-medium">
         {label}
 
-        {required && <span className="text-red-500 ml-1">*</span>}
+        {required && <span className="text-danger  ml-1">*</span>}
       </label>
 
       <InputField
@@ -34,7 +34,7 @@ function FormField({
         onChange={onChange}
       />
 
-      {error && <p className="text-red-500 text-sm">{error}</p>}
+      {error && <p className="text-danger text-sm">{error}</p>}
     </div>
   );
 }

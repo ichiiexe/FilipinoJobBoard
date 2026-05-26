@@ -7,7 +7,7 @@ function Button({ children, onClick }: ButtonProps) {
   return (
     <button
       onClick={onClick}
-      className="bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition"
+      className="bg-primary text-white py-3 rounded-lg hover:bg-primary-hover transition"
     >
       {children}
     </button>

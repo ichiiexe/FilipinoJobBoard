@@ -1,8 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
-import FormField from "../components/FormField";
-import StepIndicator from "../components/StepIndicator";
-import { useSignupForm } from "../hooks/useSignupForm";
-import Button from "../components/ui/Button";
+import FormField from "../../components/FormField";
+import StepIndicator from "../../components/StepIndicator";
+import { useSignupForm } from "../../hooks/useSignupForm";
+import Button from "../../components/ui/Button";
 
 function SignUp() {
   const {
@@ -24,7 +24,7 @@ function SignUp() {
   };
 
   return (
-    <div className="flex items-center justify-center ">
+    <div className="flex items-center justify-center text-text">
       <div className="w-[clamp(300px, 50%, 800px)] h-180 flex flex-col">
         {/* HEADER */}
         <div className="text-center shrink-0 mb-6">
@@ -129,7 +129,7 @@ function SignUp() {
                     error={errors.skills}
                     onChange={(v) => handleChange("skills", v)}
                   />
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-muted">
                     Note: Please separate your skills with commas.
                   </p>
 
