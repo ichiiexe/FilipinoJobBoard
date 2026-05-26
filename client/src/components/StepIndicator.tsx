@@ -21,7 +21,7 @@ function StepIndicator({ step }: StepIndicatorProps) {
                 className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm font-semibold
                 ${
                   isActive
-                    ? "border-blue-600 text-blue-600"
+                    ? "border-primary text-primary "
                     : "border-gray-300 text-gray-400"
                 }`}
               >
@@ -35,7 +35,7 @@ function StepIndicator({ step }: StepIndicatorProps) {
             {index !== steps.length - 1 && (
               <div className="flex-1 h-0.5 mx-4 mb-6 bg-gray-300 relative overflow-hidden">
                 <motion.div
-                  className="absolute inset-0 bg-blue-500 origin-left"
+                  className="absolute inset-0 bg-primary origin-left"
                   animate={{
                     scaleX: step > currentStep ? 1 : 0,
                   }}

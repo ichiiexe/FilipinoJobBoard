@@ -4,7 +4,7 @@ import { LogIn } from "lucide-react";
 
 function Header() {
   return (
-    <header className="w-full flex items-center justify-between p-4 px-20  ">
+    <header className="w-full flex items-center justify-between p-4 px-20 text-text">
       <div className="flex items-center gap-12">
         <Link to="/" className="flex items-center relative">
           <img
@@ -12,18 +12,22 @@ function Header() {
             alt="Filipino Job Board Logo"
             className="h-14 w-auto translate-y-1"
           />
-          <span className="text-4xl font-bold text-gray-800 tracking-wide">
-            SIKLAB
-          </span>
+          <span className="text-4xl font-bold tracking-wide">SIKLAB</span>
         </Link>
         <nav className="flex space-x-4">
-          <Link to="/" className="text-gray-600 hover:text-blue-500">
+          <Link to="/" className="transition-colors hover:text-primary-hover">
             Home
           </Link>
-          <Link to="/jobs" className="text-gray-600 hover:text-blue-500">
+          <Link
+            to="/jobs"
+            className="transition-colors hover:text-primary-hover"
+          >
             Jobs
           </Link>
-          <Link to="/about" className="text-gray-600 hover:text-blue-500">
+          <Link
+            to="/about"
+            className="transition-colors hover:text-primary-hover"
+          >
             About
           </Link>
         </nav>
@@ -37,7 +41,7 @@ function Header() {
 
         <Link
           to="/register"
-          className="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-3xl"
+          className="px-4 py-2 bg-primary  hover:bg-primary-hover transition-colors rounded-3xl"
         >
           Get Started
         </Link>

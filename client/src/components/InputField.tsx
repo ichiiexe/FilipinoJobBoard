@@ -8,7 +8,7 @@ type InputFieldProps = {
 function InputField({ placeholder, type, value, onChange }: InputFieldProps) {
   return (
     <input
-      className="w-full border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-blue-500"
+      className="w-full border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-primary transition"
       placeholder={placeholder}
       type={type}
       value={value}
