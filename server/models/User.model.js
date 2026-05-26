@@ -41,6 +41,10 @@ const userSchema = new mongoose.Schema(
       type: [String],
       default: [],
     },
+    phone: {
+      type: Number,
+      default: 0,
+    },
     resume: {
       type: String,
       default: "",
