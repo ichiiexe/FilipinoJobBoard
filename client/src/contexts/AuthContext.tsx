@@ -30,6 +30,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [token, setToken] = useState<string | null>(() =>
     localStorage.getItem("authToken"),
   );
+// Local React state.
   const [loading, setLoading] = useState(false);
 
   const login = async (email: string, password: string) => {

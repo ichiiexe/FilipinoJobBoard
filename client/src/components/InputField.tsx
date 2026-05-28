@@ -1,14 +1,23 @@
 type InputFieldProps = {
+  name?: string;
   placeholder: string;
   type: string;
   value: string;
   onChange: (value: string) => void;
 };
 
-function InputField({ placeholder, type, value, onChange }: InputFieldProps) {
+// Component or helper function.
+function InputField({
+  name,
+  placeholder,
+  type,
+  value,
+  onChange,
+}: InputFieldProps) {
   return (
     <input
-      className="w-full border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-primary transition"
+      name={name}
+      className="w-full rounded-xl border border-border bg-input px-4 py-3 text-text outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/25"
       placeholder={placeholder}
       type={type}
       value={value}

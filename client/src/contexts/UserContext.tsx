@@ -26,10 +26,10 @@ export const UserContext = createContext<UserContextValue | undefined>(
 );
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(false);
-
+// Read context values.
   const auth = useContext(AuthContext);
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState<boolean>(Boolean(auth?.token));
 
   const refreshUser = async () => {
     if (!auth?.token) {
@@ -67,6 +67,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const useUserContext = () => {
+// Read context values.
   const ctx = useContext(UserContext);
   if (!ctx) throw new Error("useUserContext must be used inside UserProvider");
   return ctx;

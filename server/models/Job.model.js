@@ -1,3 +1,6 @@
+import mongoose from "mongoose";
+
+// Define mongoose schema.
 const jobSchema = new mongoose.Schema(
   {
     title: {
@@ -11,10 +14,6 @@ const jobSchema = new mongoose.Schema(
     companyName: {
       type: String,
       required: true,
-    },
-    companyLogo: {
-      type: String,
-      default: "default-logo.png", // Default company logo
     },
     location: {
       type: String,
@@ -34,12 +33,12 @@ const jobSchema = new mongoose.Schema(
         "Internship",
         "Live-in",
         "Remote",
-      ], // Allowed job types
+      ],
     },
     experienceLevel: {
       type: String,
       required: true,
-      enum: ["Entry-level", "Mid-level", "Senior-level"], // Allowed experience levels
+      enum: ["Entry-level", "Mid-level", "Senior-level"],
     },
     skills: {
       type: [String],
@@ -71,3 +70,5 @@ const jobSchema = new mongoose.Schema(
     timestamps: true, // Automatically add createdAt and updatedAt fields
   },
 );
+
+export const Job = mongoose.model("Job", jobSchema);

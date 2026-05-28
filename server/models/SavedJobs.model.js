@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// Define mongoose schema.
 const savedJobSchema = new mongoose.Schema(
   {
     user: {

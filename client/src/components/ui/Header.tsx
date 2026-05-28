@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import logo from "/logo.png";
-import { LogIn } from "lucide-react";
+import { Bell, LogIn } from "lucide-react";
 
 import { useAuth } from "../../hooks/useAuth";
 import { useUser } from "../../hooks/useUser";
 import Dropdown from "../Dropdown";
 
+// Component or helper function.
 function Header() {
+// Local React state.
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+// Access authentication helpers.
   const { isAuthenticated } = useAuth();
   const { user } = useUser();
 
@@ -34,18 +37,38 @@ function Header() {
           >
             Jobs
           </Link>
+          {isAuthenticated && (
+            <Link
+              to="/post-a-job"
+              className="transition-colors hover:text-primary-hover"
+            >
+              Post a Job
+            </Link>
+          )}
           <Link
             to="/about"
             className="transition-colors hover:text-primary-hover"
           >
             About
           </Link>
+          {user?.role === "admin" && (
+            <Link
+              to="/dashboard"
+              className="transition-colors hover:text-primary-hover"
+            >
+              Dashboard
+            </Link>
+          )}
         </nav>
       </div>
 
-      <div className="flex items-center gap-4 relative">
+      <div className="flex items-center gap-2 relative">
         {isAuthenticated ? (
           <>
+            <Bell
+              className="cursor-pointer hover:text-primary-hover"
+              size={20}
+            />
             <div
               className="flex items-center gap-4 cursor-pointer hover:bg-primary-hover transition-colors px-4 py-2 rounded-2xl"
               onClick={() => setIsMenuOpen((prev) => !prev)}
@@ -54,7 +77,7 @@ function Header() {
               <img
                 src="/default-avatar.png"
                 alt="Default Avatar"
-                className="h-6 w-6 rounded-full"
+                className="h-6 w-6 rounded-full "
               />
             </div>
             {isMenuOpen && <Dropdown setIsMenuOpen={setIsMenuOpen} />}
@@ -67,7 +90,7 @@ function Header() {
             </Link>
             <Link
               to="/register"
-              className="px-4 py-2 bg-primary  hover:bg-primary-hover transition-colors rounded-3xl"
+              className="px-4 py-2 bg-primary hover:bg-primary-hover transition-colors rounded-2xl text-white"
             >
               Get Started
             </Link>

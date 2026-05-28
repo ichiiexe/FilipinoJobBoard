@@ -1,13 +1,13 @@
-type ButtonProps = {
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
-  onClick: () => void;
 };
 
-function Button({ children, onClick }: ButtonProps) {
+// Component or helper function.
+function Button({ children, className = "", ...props }: ButtonProps) {
   return (
     <button
-      onClick={onClick}
-      className="bg-primary text-white py-3 rounded-lg hover:bg-primary-hover transition"
+      className={`w-full rounded-2xl border border-border bg-surface px-6 py-3 text-sm font-medium text-text-dim transition hover:border-primary hover:text-text ${className}`}
+      {...props}
     >
       {children}
     </button>

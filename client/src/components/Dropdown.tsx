@@ -7,12 +7,16 @@ type DropdownProps = {
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+// Component or helper function.
 function Dropdown({ setIsMenuOpen }: DropdownProps) {
+// Access authentication helpers.
   const { logout } = useAuth();
+// React Router navigation hook.
   const navigate = useNavigate();
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+// Component or helper function.
     function handleClickOutside(event: MouseEvent) {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         setIsMenuOpen(false);
