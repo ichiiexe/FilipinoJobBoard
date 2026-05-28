@@ -2,32 +2,37 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import Button from "../../components/ui/Button";
 import FormField from "../../components/FormField";
+import { useAuth } from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
-  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    error: "",
   });
 
-  const [errors, setErrors] = useState({ email: "", password: "" });
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
-  const validateStep1 = () => {
-    let newErrors = {
-      email: "",
-      password: "",
-    };
-    if (!formData.email) newErrors.email = "Email is required";
-    if (!formData.password) newErrors.password = "Password is required";
-    setErrors(newErrors);
-
-    return !newErrors.email && !newErrors.password;
+  const handleChange = (field: string, value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+      error: "",
+    }));
   };
 
-  const handleChange = (field: keyof typeof formData, value: string) => {
-    console.log(field, value);
-    setFormData((prev) => ({ ...prev, [field]: value }));
-    setErrors((prev) => ({ ...prev, [field]: "" }));
+  const handleSubmit = async () => {
+    try {
+      await login(formData.email, formData.password);
+      navigate("/");
+    } catch (error) {
+      setFormData((prev) => ({
+        ...prev,
+        error: "Invalid email or password. Please try again.",
+      }));
+    }
   };
 
   return (
@@ -47,45 +52,33 @@ export default function SignIn() {
         <div className="flex-1 w-full max-w-lg mx-auto">
           <AnimatePresence mode="wait">
             <motion.div
-              key={step}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.25, ease: "easeInOut" }}
               className="flex flex-col gap-3"
             >
-              {/* STEP 1 */}
-              {step === 1 && (
-                <>
-                  <FormField
-                    label="Email"
-                    required
-                    placeholder="Email"
-                    type="email"
-                    value={formData.email}
-                    error={errors.email}
-                    onChange={(v) => handleChange("email", v)}
-                  />
+              <FormField
+                label="Email"
+                required
+                placeholder="Email"
+                type="email"
+                value={formData.email}
+                error={formData.error}
+                onChange={(v) => handleChange("email", v)}
+              />
 
-                  <FormField
-                    label="Password"
-                    required
-                    placeholder="Password"
-                    type="password"
-                    value={formData.password}
-                    error={errors.password}
-                    onChange={(v) => handleChange("password", v)}
-                  />
+              <FormField
+                label="Password"
+                required
+                placeholder="Password"
+                type="password"
+                value={formData.password}
+                error={formData.error}
+                onChange={(v) => handleChange("password", v)}
+              />
 
-                  <Button
-                    onClick={() => {
-                      if (validateStep1()) setStep(2);
-                    }}
-                  >
-                    Continue
-                  </Button>
-                </>
-              )}
+              <Button onClick={() => handleSubmit()}>Sign In</Button>
             </motion.div>
           </AnimatePresence>
         </div>
