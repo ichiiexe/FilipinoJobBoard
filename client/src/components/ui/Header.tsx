@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import logo from "/logo.png";
 import { LogIn } from "lucide-react";
 
 import { useAuth } from "../../hooks/useAuth";
 import { useUser } from "../../hooks/useUser";
-import { useNavigate } from "react-router-dom";
+import Dropdown from "../Dropdown";
 
 function Header() {
-  const { isAuthenticated, logout } = useAuth();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { isAuthenticated } = useAuth();
   const { user } = useUser();
-  const navigate = useNavigate();
 
   return (
     <header className="w-full flex items-center justify-between p-4 px-20 text-text">
@@ -41,20 +43,22 @@ function Header() {
         </nav>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 relative">
         {isAuthenticated ? (
-          <div className="flex items-center gap-4">
-            <Link to="/profile">{user?.fullName || user?.email}</Link>
-            <button
-              onClick={() => {
-                logout();
-                navigate("/");
-              }}
-              className="px-3 py-1 bg-gray-200 text-sm rounded"
+          <>
+            <div
+              className="flex items-center gap-4 cursor-pointer hover:bg-primary-hover transition-colors px-4 py-2 rounded-2xl"
+              onClick={() => setIsMenuOpen((prev) => !prev)}
             >
-              Logout
-            </button>
-          </div>
+              <h1>{user?.fullName}</h1>
+              <img
+                src="/default-avatar.png"
+                alt="Default Avatar"
+                className="h-6 w-6 rounded-full"
+              />
+            </div>
+            {isMenuOpen && <Dropdown setIsMenuOpen={setIsMenuOpen} />}
+          </>
         ) : (
           <>
             <Link to="/login">
