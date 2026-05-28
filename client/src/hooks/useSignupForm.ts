@@ -1,8 +1,11 @@
 import { useState } from "react";
 
+// Hook for managing multi-step signup form state and validation.
 export const useSignupForm = () => {
+// Local React state.
   const [step, setStep] = useState(1);
 
+// Local React state.
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -19,6 +22,7 @@ export const useSignupForm = () => {
 
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  // Update a single field and clear any existing error for that field.
   const handleChange = (field: string, value: string) => {
     setFormData((prev) => ({
       ...prev,
@@ -31,6 +35,7 @@ export const useSignupForm = () => {
     }));
   };
 
+  // Validate the account credentials step.
   const validateStep1 = () => {
     const newErrors: Record<string, string> = {};
 
@@ -59,6 +64,7 @@ export const useSignupForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // Validate the personal details step.
   const validateStep2 = () => {
     const newErrors: Record<string, string> = {};
 
@@ -79,6 +85,7 @@ export const useSignupForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // Validate the contact info step.
   const validateStep3 = () => {
     const newErrors: Record<string, string> = {};
 

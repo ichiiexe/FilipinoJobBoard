@@ -1,5 +1,6 @@
 import { motion, type Variants } from "framer-motion";
 
+// Component or helper function.
 function Home() {
   const bubbles = [
     {
@@ -88,7 +89,7 @@ function Home() {
 
   return (
     <div className="flex flex-col p-10 min-h-[80vh] justify-center">
-      <div className="mx-auto w-full max-w-7xl grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
+      <section className="mx-auto w-full max-w-7xl grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
         {/* LEFT SIDE */}
         <div className="md:col-span-3 flex flex-col justify-center">
           <span className="text-text font-bold tracking-wider text-xs uppercase mb-3 block">
@@ -106,30 +107,30 @@ function Home() {
           </p>
 
           {/* SEARCH BAR */}
-          <div className="mt-8 flex gap-3 bg-gray-50 border border-gray-200 shadow-sm rounded-2xl p-2 max-w-2xl">
+          <div className="mt-8 flex gap-3 bg-card border border-border shadow-sm rounded-3xl p-3 max-w-2xl">
             <input
               type="text"
               placeholder="Search for jobs..."
-              className="flex-1 bg-transparent text-gray-700 placeholder:text-gray-400 px-3 py-3 focus:outline-none"
+              className="flex-1 bg-input text-text placeholder:text-text-dim px-3 py-3 focus:outline-none"
             />
-            <div className="w-px bg-gray-300 my-2"></div>
+            <div className="w-px bg-border my-2"></div>
             <input
               type="text"
               placeholder="Location"
-              className="bg-transparent text-gray-700 placeholder:text-gray-400 px-3 py-3 focus:outline-none w-1/3"
+              className="bg-input text-text placeholder:text-text-dim px-3 py-3 focus:outline-none w-1/3"
             />
-            <button className="bg-blue-500 text-white px-8 py-3 rounded-xl hover:bg-blue-600 transition-all shadow-md shadow-blue-500/20 font-semibold text-sm tracking-wide">
+            <button className="bg-primary text-white px-8 py-3 rounded-xl hover:bg-primary-hover transition-all shadow-md shadow-primary/20 font-semibold text-sm tracking-wide">
               Search
             </button>
           </div>
 
           {/* POPULAR SEARCHES */}
-          <div className="mt-4 flex flex-wrap items-center gap-2 text-sm text-gray-400">
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-sm text-text-dim">
             <span className="font-medium">Popular:</span>
             {popularSearches.map((search) => (
               <button
                 key={search}
-                className="bg-gray-100 hover:bg-gray-200 text-gray-600 px-3 py-1 rounded-full text-xs transition-colors font-medium"
+                className="bg-surface hover:bg-elevated text-text-dim px-3 py-1 rounded-full text-xs transition-colors font-medium"
               >
                 {search}
               </button>
@@ -145,7 +146,6 @@ function Home() {
           animate="visible"
         >
           {bubbles.map((bubble, idx) => (
-            /* OUTER CONTAINER: Handles positioning, page entrance, and hover/tap physics */
             <motion.div
               key={idx}
               variants={bubbleVariants}
@@ -157,7 +157,7 @@ function Home() {
               whileTap={{ scale: 0.95 }}
             >
               <motion.div
-                className="w-full h-full rounded-full bg-white border border-gray-100 p-2 flex items-center justify-center shadow-md hover:shadow-xl transition-shadow duration-300"
+                className="w-full h-full rounded-full bg-card border border-border p-2 flex items-center justify-center shadow-md hover:shadow-xl transition-shadow duration-300"
                 animate={{
                   y: bubble.yRange,
                 }}
@@ -179,7 +179,8 @@ function Home() {
             </motion.div>
           ))}
         </motion.div>
-      </div>
+      </section>
+      <section>{/*  Jobs Listings or other content can go here */}</section>
     </div>
   );
 }

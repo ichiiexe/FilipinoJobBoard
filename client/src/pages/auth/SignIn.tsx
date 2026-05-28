@@ -5,14 +5,18 @@ import FormField from "../../components/FormField";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
+// Default exported React component.
 export default function SignIn() {
+// Local React state.
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     error: "",
   });
 
+// Access authentication helpers.
   const { login } = useAuth();
+// React Router navigation hook.
   const navigate = useNavigate();
 
   const handleChange = (field: string, value: string) => {
@@ -42,7 +46,7 @@ export default function SignIn() {
         <div className="text-center shrink-0 mb-6">
           <h1 className="text-5xl font-bold mb-4">Welcome Back!</h1>
 
-          <p className="text-lg text-gray-500">
+          <p className="text-lg text-text-dim">
             Enter your details to access your account and continue exploring job
             opportunities.
           </p>

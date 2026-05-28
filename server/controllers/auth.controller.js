@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import { User } from "../models/User.model.js";
 import { generateToken } from "../utils/generateToken.js";
 
+// Controller function handling a request.
 export const registerUser = async (req, res) => {
   try {
     const {
@@ -19,6 +20,7 @@ export const registerUser = async (req, res) => {
     } = req.body;
 
     const fullName = name || `${firstName || ""} ${lastName || ""}`.trim();
+    // Normalize comma-separated skills into an array of trimmed values.
     const skillArray =
       typeof skills === "string"
         ? skills
@@ -58,6 +60,7 @@ export const registerUser = async (req, res) => {
   }
 };
 
+// Controller function handling a request.
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -82,6 +85,64 @@ export const loginUser = async (req, res) => {
   }
 };
 
+// Controller function handling a request.
+export const updateUser = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const updates = req.body;
+
+    // Sanitize update payload before saving to the database.
+    if (updates.password) {
+      updates.password = await bcrypt.hash(updates.password, 10);
+    }
+
+    if (updates.skills) {
+      updates.skills =
+        typeof updates.skills === "string"
+          ? updates.skills
+              .split(",")
+              .map((skill) => skill.trim())
+              .filter(Boolean)
+          : Array.isArray(updates.skills)
+            ? updates.skills
+            : [];
+    }
+
+    if (updates.experience) {
+      updates.experience =
+        typeof updates.experience === "string" && updates.experience.trim()
+          ? [updates.experience.trim()]
+          : Array.isArray(updates.experience)
+            ? updates.experience
+            : [];
+    }
+
+    if (updates.phoneNumber) {
+      updates.phone = Number(updates.phoneNumber);
+      delete updates.phoneNumber;
+    }
+
+    if (updates.address) {
+      updates.address = updates.address.trim();
+      delete updates.address;
+    }
+
+    if (updates.bio) {
+      updates.bio = updates.bio.trim();
+      delete updates.bio;
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(userId, updates, {
+      new: true,
+    });
+
+    res.status(200).json({ user: updatedUser });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Controller function handling a request.
 export const getMe = async (req, res) => {
   try {
     // `protect` middleware attaches `req.user`

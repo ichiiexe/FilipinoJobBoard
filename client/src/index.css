@@ -7,37 +7,87 @@
   --font-heading: "Plus Jakarta Sans", sans-serif;
 
   /* Background */
-  --color-bg: #111315;
-  --color-surface: #181b1f;
-  --color-card: #20242a;
-  --color-elevated: #2a2f36;
+  --color-bg: #070a10;
+  --color-surface: #101622;
+  --color-card: #131a27;
+  --color-elevated: #1d2434;
 
   /* Text */
-  --color-text: #f5f7fa;
-  --color-text-muted: #b0b7c3;
-  --color-text-dim: #7c8593;
+  --color-text: #eef2f7;
+  --color-text-muted: #9fb1c7;
+  --color-text-dim: #6f809b;
 
-  /* Flag */
-  --color-primary: #0057b8;
-  --color-primary-hover: #1b74e4;
-  --color-primary-glow: #4c9fff;
+  /* Philippine flag */
+  --color-primary: #003a70;
+  --color-primary-hover: #1a5db9;
+  --color-primary-glow: #4d88ff;
 
-  /* Accents */
-  --color-danger: #ce1126;
-  --color-danger-hover: #e63946;
+  --color-danger: #c8102e;
+  --color-danger-hover: #ee2b4d;
 
-  --color-accent: #f4c430;
-  --color-accent-soft: #ffd166;
-  --color-accent-muted: #c79a1b;
+  --color-accent: #ffcb05;
+  --color-accent-soft: #ffe382;
+  --color-accent-muted: #b38b1a;
 
   /* States */
-  --color-border: #2f3540;
-  --color-input: #171a1f;
-  --color-hover: #252b33;
-  --color-divider: #2a3038;
+  --color-border: #283045;
+  --color-input: #111725;
+  --color-hover: #172034;
+  --color-divider: #22304a;
 
   --color-success: #22c55e;
   --color-warning: #f59e0b;
+}
+
+:root {
+  color-scheme: dark;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(255, 203, 5, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(200, 17, 46, 0.1),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at center right,
+      rgba(0, 90, 184, 0.12),
+      transparent 26%
+    ),
+    var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(255, 203, 5, 0.25);
+  color: var(--color-text);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
 /* Chrome, Safari, Edge, Opera */

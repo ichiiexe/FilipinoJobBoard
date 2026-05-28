@@ -50,7 +50,7 @@ function SignUp() {
         <div className="text-center shrink-0 mb-6">
           <h1 className="text-5xl font-bold mb-4">Let's Get Started!</h1>
 
-          <p className="text-lg text-gray-500">
+          <p className="text-lg text-text-dim">
             Enter your details to create an account and start exploring job
             opportunities.
           </p>
@@ -149,7 +149,7 @@ function SignUp() {
                     error={errors.skills}
                     onChange={(v) => handleChange("skills", v)}
                   />
-                  <p className="text-sm text-muted">
+                  <p className="text-sm text-text-dim">
                     Note: Please separate your skills with commas.
                   </p>
 
@@ -161,7 +161,7 @@ function SignUp() {
                     onChange={(v) => handleChange("bio", v)}
                   />
 
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 w-full">
                     <Button onClick={() => setStep(1)}>Back</Button>
 
                     <Button
@@ -200,7 +200,7 @@ function SignUp() {
                     onChange={(v) => handleChange("address", v)}
                   />
 
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 w-full">
                     <Button onClick={() => setStep(2)}>Back</Button>
 
                     <Button onClick={handleSubmit}>Sign Up</Button>
