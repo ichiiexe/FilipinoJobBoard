@@ -1,8 +1,10 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import FormField from "../../components/FormField";
 import StepIndicator from "../../components/StepIndicator";
 import { useSignupForm } from "../../hooks/useSignupForm";
 import Button from "../../components/ui/Button";
+import { useAuth } from "../../hooks/useAuth";
 
 function SignUp() {
   const {
@@ -16,11 +18,29 @@ function SignUp() {
     validateStep3,
   } = useSignupForm();
 
-  const handleSubmit = () => {
+  const { register } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async () => {
     if (!validateStep3()) return;
 
-    console.log(formData);
-    alert("Signup Complete!");
+    try {
+      await register({
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        password: formData.password,
+        bio: formData.bio,
+        skills: formData.skills,
+        phoneNumber: formData.phoneNumber,
+        address: formData.address,
+        experience: formData.experience,
+        resumeLink: formData.resumeLink,
+      });
+
+      navigate("/");
+    } catch (error) {
+      console.error("Sign up failed:", error);
+    }
   };
 
   return (

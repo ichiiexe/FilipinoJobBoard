@@ -2,7 +2,15 @@ import { Link } from "react-router-dom";
 import logo from "/logo.png";
 import { LogIn } from "lucide-react";
 
+import { useAuth } from "../../hooks/useAuth";
+import { useUser } from "../../hooks/useUser";
+import { useNavigate } from "react-router-dom";
+
 function Header() {
+  const { isAuthenticated, logout } = useAuth();
+  const { user } = useUser();
+  const navigate = useNavigate();
+
   return (
     <header className="w-full flex items-center justify-between p-4 px-20 text-text">
       <div className="flex items-center gap-12">
@@ -34,17 +42,33 @@ function Header() {
       </div>
 
       <div className="flex items-center gap-4">
-        <Link to="/login">
-          Sign In
-          <LogIn className="inline-block ml-1" size={18} />
-        </Link>
-
-        <Link
-          to="/register"
-          className="px-4 py-2 bg-primary  hover:bg-primary-hover transition-colors rounded-3xl"
-        >
-          Get Started
-        </Link>
+        {isAuthenticated ? (
+          <div className="flex items-center gap-4">
+            <Link to="/profile">{user?.fullName || user?.email}</Link>
+            <button
+              onClick={() => {
+                logout();
+                navigate("/");
+              }}
+              className="px-3 py-1 bg-gray-200 text-sm rounded"
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <>
+            <Link to="/login">
+              Sign In
+              <LogIn className="inline-block ml-1" size={18} />
+            </Link>
+            <Link
+              to="/register"
+              className="px-4 py-2 bg-primary  hover:bg-primary-hover transition-colors rounded-3xl"
+            >
+              Get Started
+            </Link>
+          </>
+        )}
       </div>
     </header>
   );
