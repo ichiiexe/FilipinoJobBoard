@@ -6,6 +6,9 @@ export const createJob = async (req, res) => {
     const {
       title,
       description,
+      keyResponsibilities,
+      requirements,
+      niceToHave = "",
       companyName,
       location,
       salary,
@@ -13,11 +16,14 @@ export const createJob = async (req, res) => {
       experienceLevel,
       skills = [],
       applyURL = "",
+      expiresAt,
     } = req.body;
 
     if (
       !title ||
       !description ||
+      !keyResponsibilities ||
+      !requirements ||
       !companyName ||
       !location ||
       !salary ||
@@ -30,6 +36,9 @@ export const createJob = async (req, res) => {
     const newJob = new Job({
       title,
       description,
+      keyResponsibilities,
+      requirements,
+      niceToHave,
       companyName,
       location,
       salary,
@@ -37,6 +46,7 @@ export const createJob = async (req, res) => {
       experienceLevel,
       skills,
       applyURL,
+      expiresAt,
       postedBy: req.user._id,
     });
 
@@ -58,6 +68,22 @@ export const getJobs = async (req, res) => {
     res.status(200).json({ jobs });
   } catch (error) {
     console.error("Get jobs error:", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const getJobById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const job = await Job.findById(id).populate("postedBy", "fullName email");
+
+    if (!job) {
+      return res.status(404).json({ message: "Job not found" });
+    }
+
+    res.status(200).json({ job });
+  } catch (error) {
+    console.error("Get job by id error:", error);
     res.status(500).json({ message: error.message });
   }
 };

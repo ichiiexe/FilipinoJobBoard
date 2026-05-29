@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { getJobs } from "../api/axios";
-import { Bookmark } from "lucide-react";
+import JobCard from "../components/JobCard";
 
 // Component or helper function.
 function Jobs() {
@@ -61,9 +61,9 @@ function Jobs() {
           No jobs available yet.
         </div>
       ) : (
-        <div className="grid gap-8 xl:grid-cols-3 lg:grid-cols-2">
+        <div className="grid gap-8 xl:grid-cols-5 lg:grid-cols-2">
           {jobs.map((job) => (
-            <></>
+            <JobCard key={job._id} job={job} />
           ))}
         </div>
       )}

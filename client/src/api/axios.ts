@@ -63,6 +63,9 @@ export const getMe = async () => {
 export const postJob = async (data: {
   title: string;
   description: string;
+  keyResponsibilities: string;
+  requirements: string;
+  niceToHave?: string;
   companyName: string;
   location: string;
   salary: string;
@@ -70,6 +73,7 @@ export const postJob = async (data: {
   experienceLevel: string;
   skills?: string[];
   applyURL?: string;
+  expiresAt?: string;
 }) => {
   try {
     const response = await api.post("/jobs", data);
@@ -81,6 +85,16 @@ export const postJob = async (data: {
 };
 
 // Controller function handling a request.
+export const getJobById = async (id: string) => {
+  try {
+    const response = await api.get(`/jobs/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Get job by id error:", error);
+    throw error;
+  }
+};
+
 export const getJobs = async () => {
   try {
     const response = await api.get("/jobs");
