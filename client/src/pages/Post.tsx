@@ -18,14 +18,17 @@ const experienceLevels = ["Entry-level", "Mid-level", "Senior-level"];
 
 // Component or helper function.
 function Post() {
-// React Router navigation hook.
+  // React Router navigation hook.
   const navigate = useNavigate();
-// Local React state.
+  // Local React state.
   const [loading, setLoading] = useState(false);
-// Local React state.
+  // Local React state.
   const [form, setForm] = useState({
     title: "",
     description: "",
+    keyResponsibilities: "",
+    requirements: "",
+    niceToHave: "",
     companyName: "",
     location: "",
     salary: "",
@@ -33,6 +36,7 @@ function Post() {
     experienceLevel: experienceLevels[0],
     skills: "",
     applyURL: "",
+    expiresAt: "",
   });
 
   const handleInputChange = (name: keyof typeof form, value: string) => {
@@ -51,7 +55,8 @@ function Post() {
               .map((s) => s.trim())
               .filter(Boolean)
           : [],
-      } as any;
+        ...(form.expiresAt ? { expiresAt: form.expiresAt } : {}),
+      };
 
       await postJob(payload);
       navigate("/jobs");
@@ -187,17 +192,49 @@ function Post() {
                   label="Description"
                   name="description"
                   required
-                  placeholder="Describe the role and responsibilities..."
+                  placeholder="Describe the role and summary..."
                   as="textarea"
-                  rows={6}
+                  rows={5}
                   value={form.description}
                   onChange={(value) => handleInputChange("description", value)}
                 />
                 <FormField
+                  label="Key Responsibilities"
+                  name="keyResponsibilities"
+                  required
+                  placeholder="Describe the main responsibilities..."
+                  as="textarea"
+                  rows={4}
+                  value={form.keyResponsibilities}
+                  onChange={(value) =>
+                    handleInputChange("keyResponsibilities", value)
+                  }
+                />
+                <FormField
                   label="Requirements"
+                  name="requirements"
+                  required
+                  placeholder="List the requirements and must-haves..."
+                  as="textarea"
+                  rows={4}
+                  value={form.requirements}
+                  onChange={(value) => handleInputChange("requirements", value)}
+                />
+                <FormField
+                  label="Nice to Have"
+                  name="niceToHave"
+                  required={false}
+                  placeholder="Optional nice-to-have skills or perks"
+                  as="textarea"
+                  rows={3}
+                  value={form.niceToHave}
+                  onChange={(value) => handleInputChange("niceToHave", value)}
+                />
+                <FormField
+                  label="Preferred Skills"
                   name="skills"
                   required={false}
-                  placeholder="List required skills, comma separated"
+                  placeholder="Comma-separated skill tags"
                   type="text"
                   value={form.skills}
                   onChange={(value) => handleInputChange("skills", value)}
@@ -210,6 +247,15 @@ function Post() {
                   type="url"
                   value={form.applyURL}
                   onChange={(value) => handleInputChange("applyURL", value)}
+                />
+                <FormField
+                  label="Application Deadline"
+                  name="expiresAt"
+                  required={false}
+                  placeholder="YYYY-MM-DD"
+                  type="date"
+                  value={form.expiresAt}
+                  onChange={(value) => handleInputChange("expiresAt", value)}
                 />
               </div>
             </section>

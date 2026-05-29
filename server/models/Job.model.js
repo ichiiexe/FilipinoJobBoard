@@ -11,6 +11,17 @@ const jobSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    keyResponsibilities: {
+      type: String,
+      required: true,
+    },
+    requirements: {
+      type: String,
+      required: true,
+    },
+    niceToHave: {
+      type: String,
+    },
     companyName: {
       type: String,
       required: true,

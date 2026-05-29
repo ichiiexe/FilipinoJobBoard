@@ -50,6 +50,12 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    postedJobs: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Job",
+      },
+    ],
   },
   {
     timestamps: true, // Automatically add createdAt and updatedAt fields
